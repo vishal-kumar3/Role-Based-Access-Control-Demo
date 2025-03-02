@@ -10,18 +10,14 @@ declare global {
 
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const userId = req.headers['userId'] // Mock: pass ID in header
-  if (typeof userId !== 'string') {
-    res.status(400).json({ message: 'Bad Request: userId is required and should be a string' });
-    return
-  }
+  const userId = req.headers['user-id'] // Mock: pass ID in header
 
   const users = {
     1: { id: 1, role: 'admin' },
     2: { id: 2, role: 'editor' },
     3: { id: 3, role: 'viewer' },
   };
-  const user = users[Number(userId)];
+  const user = users[parseInt(userId as string)];
   if (!user) {
     res.status(401).json({ message: 'Unauthorized' })
     return

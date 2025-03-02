@@ -1,7 +1,7 @@
 {
   "name": "rbac",
   "module": "index.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
